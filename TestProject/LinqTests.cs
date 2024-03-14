@@ -33,19 +33,7 @@ namespace TestProject
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void GroupByFirstLetter_ReturnsGroupsCorrectly()
-        {
-            var words = new List<string> { "apple", "banana", "apricot", "cherry" };
-            // Expected correction will change type to char
-            // var expectedGroupCount = 2; // Groups 'a' and 'b'
-            // Corrected to reflect expected output after fixing the bug
-            var groups = _operations.GroupByFirstLetter(words).ToList();
-
-            // This assertion needs to change to reflect the correct grouping by first letter
-            // Assert.Equal(expectedGroupCount, groups.Count(g => g.Key == 'a' || g.Key == 'b'));
-            // Placeholder for correct assertion after bug fix
-        }
+     
 
         [Fact]
         public void FirstNumberGreaterThanTen_ReturnsFirstValidNumber()
@@ -67,6 +55,38 @@ namespace TestProject
             var result = _operations.UniqueNumberIsFive(numbers);
 
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void SumOrdersByCustomer_CorrectlySumsAmountsByCustomer()
+        {
+            // Setup
+            var orders = new List<Order>
+            {
+                new Order { CustomerId = 1, Amount = 100m },
+                new Order { CustomerId = 2, Amount = 150m },
+                new Order { CustomerId = 1, Amount = 50m },
+                new Order { CustomerId = 2, Amount = 100m }
+            };
+            
+            var expectedSums = new Dictionary<int, decimal>
+            {
+                { 1, 150m },
+                { 2, 250m }
+            };
+
+
+            // Act
+            var result = _operations.SumOrdersByCustomer(orders);
+
+            // Assert
+            Assert.Equal(expectedSums.Count, result.Count);
+            foreach (var expectedSum in expectedSums)
+            {
+                decimal actualSum;
+                Assert.True(result.TryGetValue(expectedSum.Key, out actualSum));
+                Assert.Equal(expectedSum.Value, actualSum);
+            }
         }
     }
 }

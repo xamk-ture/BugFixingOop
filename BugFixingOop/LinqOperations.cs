@@ -20,10 +20,16 @@ namespace BugFixingOop
             return numbers.Select(n => n); // Bug: Should multiply each number by 2
         }
 
-        // Assignment 3: Incorrect `GroupBy` Usage
-        public IEnumerable<IGrouping<char, string>> GroupByFirstLetter(List<string> words)
+        //Assignment 3: You are given a list of Order objects, each with a CustomerId and Amount.
+        //The task is to group orders by CustomerId and sum the amounts for each customer.
+        //However, the current implementation incorrectly sums the total amount of all orders, not grouping them by customer.
+
+        public Dictionary<int, decimal> SumOrdersByCustomer(List<Order> orders)
         {
-            return words.GroupBy(word => word.Length); // Bug: Should group by the first character
+            // Buggy implementation: It sums the amounts of all orders without grouping by CustomerId.
+            return orders
+                .GroupBy(order => order.CustomerId)
+                .ToDictionary(group => group.Key, group => orders.Sum(order => order.Amount)); // Bug here
         }
 
         // Assignment 4: Misuse of `FirstOrDefault`
@@ -37,5 +43,11 @@ namespace BugFixingOop
         {
             return numbers.SingleOrDefault(); // Bug: Should return the number if it's exactly 5 and unique
         }
+    }
+
+    public class Order
+    {
+        public int CustomerId { get; set; }
+        public decimal Amount { get; set; }
     }
 }
