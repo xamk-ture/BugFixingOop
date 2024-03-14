@@ -88,5 +88,35 @@ namespace TestProject
                 Assert.Equal(expectedSum.Value, actualSum);
             }
         }
+
+        [Fact]
+        public void FilterExpensiveProducts_ReturnsCorrectResults()
+        {
+            var products = new List<Product>
+            {
+                new Product { Name = "Laptop", Price = 1200m },
+                new Product { Name = "Mouse", Price = 25m },
+                new Product { Name = "Keyboard", Price = 150m }
+            };
+
+            var result = _operations.FilterExpensiveProducts(products);
+
+            Assert.Equal(2, result.Count());
+            Assert.DoesNotContain(result, p => p.Price <= 100);
+        }
+
+        [Fact]
+        public void ExtractEmployeeNames_ReturnsOnlyNames()
+        {
+            var employees = new List<Employee>
+            {
+                new Employee { Name = "John Doe", Age = 30 },
+                new Employee { Name = "Jane Smith", Age = 25 }
+            };
+
+            var result = _operations.ExtractEmployeeNames(employees);
+
+            Assert.Equal(employees.Select(e => e.Name), result);
+        }
     }
 }

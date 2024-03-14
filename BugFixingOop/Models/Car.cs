@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BugFixingOop.Models
+namespace BugFixingOop
 {
     // Problem Description:
     // The Car class does not correctly implement the IVehicle interface methods.
@@ -15,16 +15,16 @@ namespace BugFixingOop.Models
         void StopEngine();
     }
 
-    //public class Car : IVehicle
-    //{
-    //    public void Start() 
-    //    {
-    //        Console.WriteLine("Engine started.");
-    //    }
+    public class Car : IVehicle
+    {
+        public void Start() 
+        {
+            Console.WriteLine("Engine started.");
+        }
 
-    //    public void Stop() 
-    //    {
-    //        Console.WriteLine("Engine stopped.");
-    //    }
-    //}
+        public void Stop() 
+        {
+            Console.WriteLine("Engine stopped.");
+        }
+    }
 }

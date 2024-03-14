@@ -1,3 +1,4 @@
+using BugFixingOop;
 using BugFixingOop.Models;
 using System;
 
@@ -61,15 +62,15 @@ namespace TestProject
         [Fact]
         public void Car_ImplementsIVehicleMethods()
         {
-            //IVehicle car = new Car();
-            //var consoleOutput = new StringWriter();
-            //Console.SetOut(consoleOutput);
+            IVehicle car = new Car();
+            var consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
 
-            //car.StartEngine();
-            //Assert.Contains("Engine started.", consoleOutput.ToString());
+            car.StartEngine();
+            Assert.Contains("Engine started.", consoleOutput.ToString());
 
-            //car.StopEngine();
-            //Assert.Contains("Engine stopped.", consoleOutput.ToString());
+            car.StopEngine();
+            Assert.Contains("Engine stopped.", consoleOutput.ToString());
         }
 
 
