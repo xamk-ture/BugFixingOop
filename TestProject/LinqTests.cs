@@ -108,10 +108,10 @@ namespace TestProject
         [Fact]
         public void ExtractEmployeeNames_ReturnsOnlyNames()
         {
-            var employees = new List<Employee>
+            var employees = new List<LinqEmployee>
             {
-                new Employee { Name = "John Doe", Age = 30 },
-                new Employee { Name = "Jane Smith", Age = 25 }
+                new LinqEmployee { Name = "John Doe", Age = 30 },
+                new LinqEmployee { Name = "Jane Smith", Age = 25 }
             };
 
             var result = _operations.ExtractEmployeeNames(employees);

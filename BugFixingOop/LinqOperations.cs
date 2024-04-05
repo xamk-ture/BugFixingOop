@@ -40,7 +40,7 @@ namespace BugFixingOop
         }
 
         // Buggy implementation: Incorrectly extracts properties. It should return the names of employees.
-        public IEnumerable<string> ExtractEmployeeNames(List<Employee> employees)
+        public IEnumerable<string> ExtractEmployeeNames(List<LinqEmployee> employees)
         {
             
             return employees.Select(e => e.Age.ToString()); 
@@ -71,7 +71,7 @@ namespace BugFixingOop
         public decimal Price { get; set; }
     }
 
-    public class Employee
+    public class LinqEmployee
     {
         public string Name { get; set; }
         public int Age { get; set; }
