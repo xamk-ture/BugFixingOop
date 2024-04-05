@@ -22,9 +22,19 @@ namespace BugFixingOop
             Console.WriteLine("Engine started.");
         }
 
+        public void StartEngine()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Stop() 
         {
             Console.WriteLine("Engine stopped.");
+        }
+
+        public void StopEngine()
+        {
+            throw new NotImplementedException();
         }
     }
 }

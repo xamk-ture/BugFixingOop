@@ -24,7 +24,6 @@ namespace BugFixingOop.Models
 
         public Student(string studentID) : base("")
         {
-            StudentID = studentID;
         }
     }
 }
